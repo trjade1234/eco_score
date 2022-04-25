@@ -5,4 +5,3 @@ gsheetsdb
 numpy
 gsheetsdb
 shillelagh
-geopy
