@@ -66,7 +66,13 @@ if st.sidebar.button('驾驶轨迹分项分析'):
                 c = 2 * atan2(sqrt(a), sqrt(1 - a))
                 distance += R * c
         avgspeed = distance/(len(tripselected)*3/3600)
-        st.subheader(str('平均速度'+str(round(avgspeed,2))))
+        idleperc = 0.1
+        st.subheader(str('平均速度'+str(round(avgspeed,2))+'km/h'+' 排名前50%'))
+        avgspeed_bar = st.progress(0)
+        avgspeed_bar.progress(50 + 1) #this has to be changed
+        st.subheader(str('怠速比例'+str(idleperc*100)+'%'+' 排名前80%'))
+        idleperc_bar = st.progress(0)
+        idleperc_bar.progress(80 + 1) #this has to be changed
 
         
 
