@@ -4,11 +4,11 @@ import math
 import pandas as pd
 import streamlit as st
 from gsheetsdb import connect
-#from google.oauth2 import service_account3
+from google.oauth2 import service_account3
 
 
 #st.title('This is Eco-score!')
-st.title.success("生态驾驶，您的绿色驾驶新体验")
+st.title("生态驾驶，您的绿色驾驶新体验")
 
 #if st.sidebar.button('Back to home'):
 #    st.write("  ")
