@@ -76,6 +76,7 @@ st.write('这辆车共有',str(len(vehselected.orderid.unique())), '条行程')
 st.subheader("您想查看哪趟行程")
 tripoption = st.selectbox('', vehselected.orderid.unique())
 tripselected = vehselected[vehselected.orderid == tripoption]
+st.write(tripselected.head())
 
 #st.subheader('This is the trajectory')
 st.subheader("行程路线图")
