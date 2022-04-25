@@ -5,9 +5,10 @@ import pandas as pd
 import streamlit as st
 from gsheetsdb import connect
 from google.oauth2 import service_account
+import geopy.distance
 
 #st.title('This is Eco-score!')
-st.title("生态驾驶评分，助力您的绿色驾驶新体验")
+st.success.title("生态驾驶，您的绿色驾驶新体验")
 
 #if st.sidebar.button('Back to home'):
 #    st.write("  ")
@@ -45,6 +46,25 @@ map_data['lat'] = tripselected.latitude
 map_data['lon'] = tripselected.longitude
 st.map(map_data)
 
+if.sidebar.button('查看您的驾驶评分'):
+        st.subheader('总评分')
+        my_bar = st.progress(0)
+        my_bar.progress(70 + 1) #this has to be changed
+
+if.sidebar.button('驾驶轨迹分项分析'):
+        distance = 0
+        for i in range(1, len(tripselected)):
+                lat1 = tripselected['latitude'][i]
+                long1 = tripselected['longitude'][i]
+                lat2 = tripselected['latitude'][i-1]
+                long1 = tripselected['longitude'][i-1]
+                coords_1 = (long1, lat1)
+                coords_2 = (long2, lat2)
+                distance += geopy.distance.geodesic(coords_1, coords_2).km
+        avgspeed = distance/(len(tripselected)*3/3600)
+        st.subheader(str('平均速度'+str(round(avgspeed,2))))
+
+        
 
 
 ########################################################################################################################
