@@ -100,7 +100,7 @@ if st.sidebar.button('驾驶轨迹分项分析'):
         st.subheader(str('平均速度'+str(round(avgspeed,2))+'km/h'+' 排名前50%'))
         avgspeed_bar = st.progress(0)
         avgspeed_bar.progress(50 + 1) #this has to be changed
-        st.subheader(str('平均加速度'+str(round(avgacc,2))+'km/h'+' 排名前50%'))
+        st.subheader(str('平均加速度'+str(round(avgacc,2))+'m/s2'+' 排名前50%'))
         avgacc_bar = st.progress(0)
         avgacc_bar.progress(60 + 1) #this has to be changed
         st.subheader(str('怠速比例'+str(idleperc*100)+'%'+' 排名前80%'))
