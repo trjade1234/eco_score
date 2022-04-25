@@ -4,7 +4,7 @@ import math
 import pandas as pd
 import streamlit as st
 from gsheetsdb import connect
-from google.oauth2 import service_account3
+#from google.oauth2 import service_account3
 
 
 #st.title('This is Eco-score!')
