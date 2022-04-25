@@ -8,27 +8,6 @@ from gsheetsdb import connect
 from math import sin, cos, sqrt, atan2, radians
 from datetime import datetime
 
-#define distance function
-def distance(long1, long2, lat1, lat2): #in km
-    R = 6373.0
-    lat1 = radians(lat1)
-    lon1 = radians(long1)
-    lat2 = radians(lat2)
-    lon2 = radians(long2)
-    dlon = lon2 - lon1
-    dlat = lat2 - lat1
-    a = sin(dlat/2)**2 + cos(lat1) * cos(lat2) * sin(dlon / 2)**2
-    c = 2 * atan2(sqrt(a), sqrt(1 - a))
-    distance = R * c
-    return distance
-
-def power(speed, acc):
-    ptractive = (2.76*speed+0.27*(speed**2)+1672.34*acc-23.6)
-    if ptractive >= 0:
-        p = 1.285*ptractive*speed + 2548.1 #watt
-    else:
-        p = 0.894*ptractive*speed + 3070.6 #watt
-    return p
 
 
 #st.title('This is Eco-score!')
@@ -39,28 +18,14 @@ st.title("生态驾驶，您的绿色驾驶新体验")
 
 
 #if st.sidebar.button('Loading trajectory'):
-gs_id = "1JznNtYSlTlOwmFq8baTR4Ws0r7f865wyPe2NG4m45a0"
-sheetname = "sampledata"
+gs_id = "1AcNdtXT4B1DnXgYR-xVWLeVyrnEGxgKyWiNkM2Hp8VU"
+sheetname = "carpooling_gps_processed"
 gs_url = "https://docs.google.com/spreadsheets/d/{}/gviz/tq?tqx=out:csv&sheet={}".format(gs_id, sheetname)
 #st.write(gs_url)
 df = pd.read_csv(gs_url, encoding = 'utf-8')
 st.write(df.head())
 
 vehid = df.vehid.unique()
-dist = 0
-df['timediff'] = 0
-df['speed'] = 0
-df['acceleration'] = 0
-df['e_power'] = 0
-for i in range(1, len(df)):
-    if df['orderid'][i] == df['orderid'][i-1]:
-        print((datetime.strptime(df['time'][i],"%H:%M:%S")-datetime.strptime(df['time'][i-1],"%H:%M:%S")).seconds)
-        df['timediff'][i] = (datetime.strptime(df['time'][i],"%H:%M:%S")-datetime.strptime(df['time'][i-1],"%H:%M:%S")).seconds
-        dist = distance(df['longitude'][i],df['longitude'][i-1],df['latitude'][i],df['latitude'][i-1])
-        df['speed'][i] = dist/(df['timediff'][i]/3600)
-        df['acceleration'][i] = (df['speed'][i]-df['speed'][i-1])/3.6/df['timediff'][i] #m/s2
-        df['e_power'][i] = power(df['speed'][i]/3.6, df['acceleration'][i])
-
         
 #select a specific vehicle
 #st.subheader('Choose one vehicle to visualize')
@@ -92,10 +57,7 @@ if st.sidebar.button('查看您的驾驶评分'):
         my_bar.progress(scores + 1) #this has to be changed
 
 if st.sidebar.button('驾驶轨迹分项分析'):
-        dist = 0
-        for i in range(1, len(tripselected)):
-                dist += tripselected['speed'][i]/3.6*tripselected['timediff'][i] #meters
-        avgspeed = dist/(tripselected['timediff'].sum())*3.6 #km/h
+        avgspeed = tripselected['distance'].sum()/(tripselected['timediff'].sum())*3.6 #km/h
         avgacc = tripselected['acceleration'].mean()
         idleperc = 0.1
         st.subheader(str('平均速度'+str(round(avgspeed,2))+'km/h'+' 排名前50%'))
