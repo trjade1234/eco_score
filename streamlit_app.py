@@ -22,7 +22,7 @@ gs_id = "11veXbYbVvn41Ez0WPih1YaXF5nz2PutpOxVBrzqyjmI"
 sheetname = "Sheet1"
 gs_url = "https://docs.google.com/spreadsheets/d/{}/gviz/tq?tqx=out:csv&sheet={}".format(gs_id, sheetname)
 #st.write(gs_url)
-df = pd.read_csv(gs_url)
+df = pd.read_csv(gs_url, encoding = 'utf-8')
 st.write(df.head())
 
 vehid = df.vehid.unique()
