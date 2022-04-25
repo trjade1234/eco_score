@@ -18,8 +18,8 @@ st.title("生态驾驶，您的绿色驾驶新体验")
 
 
 #if st.sidebar.button('Loading trajectory'):
-gs_id = "11veXbYbVvn41Ez0WPih1YaXF5nz2PutpOxVBrzqyjmI"
-sheetname = "Sheet1"
+gs_id = "1JznNtYSlTlOwmFq8baTR4Ws0r7f865wyPe2NG4m45a0"
+sheetname = "processed_sample"
 gs_url = "https://docs.google.com/spreadsheets/d/{}/gviz/tq?tqx=out:csv&sheet={}".format(gs_id, sheetname)
 #st.write(gs_url)
 df = pd.read_csv(gs_url, encoding = 'utf-8')
