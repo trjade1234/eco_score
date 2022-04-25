@@ -48,7 +48,7 @@ st.map(map_data)
 
 scores = 70
 if st.sidebar.button('查看您的驾驶评分'):
-        st.subheader(str('总评分',+str(scores)))
+        st.subheader(str('总评分'+str(scores)))
         my_bar = st.progress(0)
         my_bar.progress(scores + 1) #this has to be changed
 
