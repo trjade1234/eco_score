@@ -94,8 +94,8 @@ if st.sidebar.button('驾驶轨迹分项分析'):
         dist = 0
         for i in range(1, len(tripselected)):
                 dist += tripselected['speed'][i]/3.6*tripselected['timediff'][i] #meters
-        avgspeed = dist/(sum(tripselected['timediff']))*3.6 #km/h
-        avgacc = mean(tripselected['acceleration'])
+        avgspeed = dist/(tripselected['timediff'].sum())*3.6 #km/h
+        avgacc = tripselected['acceleration'].mean()
         idleperc = 0.1
         st.subheader(str('平均速度'+str(round(avgspeed,2))+'km/h'+' 排名前50%'))
         avgspeed_bar = st.progress(0)
