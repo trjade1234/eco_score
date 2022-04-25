@@ -53,14 +53,15 @@ if st.sidebar.button('查看您的驾驶评分'):
 
 if st.sidebar.button('驾驶轨迹分项分析'):
         distance = 0
-        for i in range(1, len(tripselected)):
-                lat1 = tripselected['latitude'][i]
-                long1 = tripselected['longitude'][i]
-                lat2 = tripselected['latitude'][i-1]
-                long1 = tripselected['longitude'][i-1]
-                coords_1 = (long1, lat1)
-                coords_2 = (long2, lat2)
-                distance += geopy.distance.geodesic(coords_1, coords_2).km
+        for i in range(1, len(tripselected)):                
+                R = 6373.0
+                lat1 = radians(tripselected['latitude'][i])
+                lon1 = radians(tripselected['longitude'][i])
+                lat2 = radians(tripselected['latitude'][i-1])
+                lon2 = radians(tripselected['longitude'][i-1])
+                a = sin(dlat / 2)**2 + cos(lat1) * cos(lat2) * sin(dlon / 2)**2
+                c = 2 * atan2(sqrt(a), sqrt(1 - a))
+                distance += R * c
         avgspeed = distance/(len(tripselected)*3/3600)
         st.subheader(str('平均速度'+str(round(avgspeed,2))))
 
