@@ -46,10 +46,11 @@ map_data['lat'] = tripselected.latitude
 map_data['lon'] = tripselected.longitude
 st.map(map_data)
 
+scores = 70
 if st.sidebar.button('查看您的驾驶评分'):
-        st.subheader('总评分')
+        st.subheader(str('总评分',+str(scores)))
         my_bar = st.progress(0)
-        my_bar.progress(70 + 1) #this has to be changed
+        my_bar.progress(scores + 1) #this has to be changed
 
 if st.sidebar.button('驾驶轨迹分项分析'):
         distance = 0
