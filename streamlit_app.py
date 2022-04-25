@@ -46,12 +46,12 @@ map_data['lat'] = tripselected.latitude
 map_data['lon'] = tripselected.longitude
 st.map(map_data)
 
-if.sidebar.button('查看您的驾驶评分'):
+if st.sidebar.button('查看您的驾驶评分'):
         st.subheader('总评分')
         my_bar = st.progress(0)
         my_bar.progress(70 + 1) #this has to be changed
 
-if.sidebar.button('驾驶轨迹分项分析'):
+if st.sidebar.button('驾驶轨迹分项分析'):
         distance = 0
         for i in range(1, len(tripselected)):
                 lat1 = tripselected['latitude'][i]
