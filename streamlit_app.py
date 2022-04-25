@@ -59,7 +59,7 @@ with col2:
         st.success('评分状况')
 if st.sidebar.button('查看您的驾驶评分'):
         with col2:
-                st.subsubheader('总评分状况')
+                st.markdown('**总评分状况**')
                 st.write(str('总评分'+str(scores)))
                 my_bar = st.progress(0)
                 my_bar.progress(scores + 1) #this has to be changed
@@ -69,7 +69,7 @@ if st.sidebar.button('驾驶轨迹分项分析'):
         avgacc = tripselected['acceleration'].mean()
         idleperc = 0.1
         with col2:
-                st.subsubheader('分项评分状况')
+                st.markdown('**分项评分状况**')
                 st.write(str('平均速度'+str(round(avgspeed,2))+'km/h'+' 排名前50%'))
                 avgspeed_bar = st.progress(0)
                 avgspeed_bar.progress(50 + 1) #this has to be changed
