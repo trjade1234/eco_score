@@ -5,5 +5,4 @@ gsheetsdb
 numpy
 gsheetsdb
 shillelagh
-geopy.distance
 geopy
