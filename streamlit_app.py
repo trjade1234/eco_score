@@ -22,7 +22,7 @@ gs_id = "137n-Z1L7980e6SKL7XbqTrVO1yNRtg6QC8V6j8rCUPA"
 sheetname = "carpooling_gps_processed"
 gs_url = "https://docs.google.com/spreadsheets/d/{}/gviz/tq?tqx=out:csv&sheet={}".format(gs_id, sheetname)
 #st.write(gs_url)
-df = pd.read_csv(gs_url, encoding = 'utf-8')
+df = pd.read_csv(gs_url)
 st.write(df.head())
 
 vehid = df.vehid.unique()
