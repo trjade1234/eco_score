@@ -50,7 +50,7 @@ col1, col2 = st.columns(2)
 map_data = pd.DataFrame(columns = ['lat', 'lon'])
 map_data['lat'] = tripselected.latitude
 map_data['lon'] = tripselected.longitude
-with.col1:
+with col1:
         st.subheader("行程路线图")
         st.map(map_data)
 
@@ -65,7 +65,7 @@ if st.sidebar.button('驾驶轨迹分项分析'):
         avgspeed = tripselected['distance'].sum()/(tripselected['timediff'].sum())*3.6 #km/h
         avgacc = tripselected['acceleration'].mean()
         idleperc = 0.1
-        with.col2:
+        with col2:
                 st.subheader(str('平均速度'+str(round(avgspeed,2))+'km/h'+' 排名前50%'))
                 avgspeed_bar = st.progress(0)
                 avgspeed_bar.progress(50 + 1) #this has to be changed
