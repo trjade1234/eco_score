@@ -5,7 +5,7 @@ import pandas as pd
 import streamlit as st
 from gsheetsdb import connect
 from google.oauth2 import service_account
-import geopy.distance
+import geopy
 
 #st.title('This is Eco-score!')
 st.success.title("生态驾驶，您的绿色驾驶新体验")
