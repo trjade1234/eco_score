@@ -29,7 +29,7 @@ vehid = df.vehid.unique()
         
 #select a specific vehicle
 #st.subheader('Choose one vehicle to visualize')
-st.subheader("您想查看哪辆车")
+st.success("您想查看哪辆车")
 vehoption = st.selectbox('', df.vehid.unique())
 vehselected = df[df.vehid == vehoption]
 
@@ -38,7 +38,7 @@ vehselected = df[df.vehid == vehoption]
 st.markdown(str('这辆车共有'+str(len(vehselected.orderid.unique()))+'条行程'))
 
 #st.subheader('Choose one trip to visualize')
-st.subheader("您想查看哪趟行程")
+st.success("您想查看哪趟行程")
 tripoption = st.selectbox('', vehselected.orderid.unique())
 tripselected = vehselected[vehselected.orderid == tripoption]
 #st.write(tripselected.head())
@@ -55,9 +55,12 @@ with col1:
         st.map(map_data)
 
 scores = 70
+with col2:
+        st.subheader('评分状况')
 if st.sidebar.button('查看您的驾驶评分'):
         with col2:
-                st.subheader(str('总评分'+str(scores)))
+                st.subheader('评分状况')
+                st.write(str('总评分'+str(scores)))
                 my_bar = st.progress(0)
                 my_bar.progress(scores + 1) #this has to be changed
 
@@ -66,7 +69,8 @@ if st.sidebar.button('驾驶轨迹分项分析'):
         avgacc = tripselected['acceleration'].mean()
         idleperc = 0.1
         with col2:
-                st.subheader(str('平均速度'+str(round(avgspeed,2))+'km/h'+' 排名前50%'))
+                st.subheader('评分状况')
+                st.write(str('平均速度'+str(round(avgspeed,2))+'km/h'+' 排名前50%'))
                 avgspeed_bar = st.progress(0)
                 avgspeed_bar.progress(50 + 1) #this has to be changed
                 st.subheader(str('平均加速度'+str(round(avgacc,2))+'m/s2'+' 排名前50%'))
