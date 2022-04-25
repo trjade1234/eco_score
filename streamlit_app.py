@@ -59,7 +59,9 @@ if st.sidebar.button('驾驶轨迹分项分析'):
                 lon1 = radians(tripselected['longitude'][i])
                 lat2 = radians(tripselected['latitude'][i-1])
                 lon2 = radians(tripselected['longitude'][i-1])
-                a = sin(dlat / 2)**2 + cos(lat1) * cos(lat2) * sin(dlon / 2)**2
+                dlon = lon2 - lon1
+                dlat = lat2 - lat1
+                a = sin(dlat/2)**2 + cos(lat1) * cos(lat2) * sin(dlon / 2)**2
                 c = 2 * atan2(sqrt(a), sqrt(1 - a))
                 distance += R * c
         avgspeed = distance/(len(tripselected)*3/3600)
