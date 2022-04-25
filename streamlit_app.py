@@ -8,7 +8,7 @@ from gsheetsdb import connect
 
 
 #st.title('This is Eco-score!')
-st.success.title("生态驾驶，您的绿色驾驶新体验")
+st.title.success("生态驾驶，您的绿色驾驶新体验")
 
 #if st.sidebar.button('Back to home'):
 #    st.write("  ")
