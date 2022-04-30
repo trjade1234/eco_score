@@ -6,3 +6,4 @@ numpy
 gsheetsdb
 shillelagh
 datetime
+pyTigerGraph
