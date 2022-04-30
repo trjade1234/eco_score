@@ -7,7 +7,7 @@ from gsheetsdb import connect
 #from google.oauth2 import service_account3
 from math import sin, cos, sqrt, atan2, radians
 from datetime import datetime
-
+import pyTigerGraph as tg
 
 
 #st.title('This is Eco-score!')
